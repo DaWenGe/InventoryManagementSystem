@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS InventorySystemDB;
+
+USE InventorySystemDB
