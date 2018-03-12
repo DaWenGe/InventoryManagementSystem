@@ -18,3 +18,26 @@ CREATE TABLE IF NOT EXISTS Users (
     PRIMARY KEY (UserID),
     FOREIGN KEY (UserTypeID) REFERENCES UserTypes (UserTypeID)
 );
+
+CREATE TABLE IF NOT EXISTS Products (
+	ProductID int NOT NULL,
+    ProductName varchar(100) NOT NULL,
+    Description text NULL,
+    ProductImage varchar(255) NULL,
+    ProductCode varchar(50) NOT NULL,
+    PRIMARY KEY (ProductID)
+);
+
+CREATE TABLE IF NOT EXISTS Colors (
+	ColorID int NOT NULL,
+    ColorName varchar(100) NOT NULL,
+    PRIMARY KEY (ColorID)
+);
+
+CREATE TABLE IF NOT EXISTS ProductColors (
+	ProductColorID int NOT NULL,
+    ProductID int NOT NULL,
+    ColorID int NOT NULL,
+    FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
+    FOREIGN KEY (ColorID) REFERENCES Colors (ColorID)
+)
