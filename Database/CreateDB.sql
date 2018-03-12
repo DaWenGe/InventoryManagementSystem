@@ -63,3 +63,19 @@ CREATE TABLE IF NOT EXISTS Inventory (
     PRIMARY KEY (InventoryID),
     FOREIGN KEY (ProductColorID) REFERENCES ProductColors (ProductColorID)
 );
+  
+CREATE TABLE IF NOT EXISTS Stores (
+	StoreID int NOT NULL,
+    StoreName varchar(100) NOT NULL,
+    Address varchar(255) NOT NULL,
+    City varchar(50) NOT NULL,
+    PhoneNumber varchar(50) NOT NULL,
+    PRIMARY KEY (StoreID)
+);
+
+CREATE TABLE IF NOT EXISTS UserStores (
+	UserID int NOT NULL,
+    StoreID int NOT NULL,
+    FOREIGN KEY (UserID) REFERENCES Users (UserID),
+    FOREIGN KEY (StoreID) REFERENCES Stores (StoreID)
+);
