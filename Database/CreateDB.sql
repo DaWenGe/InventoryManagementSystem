@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS Inventory (
 	InventoryID int NOT NULL AUTO_INCREMENT,
     ProductColorID int NOT NULL,
     Quantity int NOT NULL,
-    Price DECIMAL(10,2) NOT NULL,
+    Price decimal(10,2) NOT NULL,
     PRIMARY KEY (InventoryID),
     FOREIGN KEY (ProductColorID) REFERENCES ProductColors (ProductColorID)
 );
@@ -80,4 +80,23 @@ CREATE TABLE IF NOT EXISTS UserStores (
     FOREIGN KEY (StoreID) REFERENCES Stores (StoreID)
 );
 
+
+CREATE TABLE IF NOT EXISTS Orders (
+	OrderID int NOT NULL,
+    ProductColorID int NOT NULL,
+    OrderQuantity int NOT NULL,
+    OrderDateTime datetime NOT NULL,
+    GST decimal(10,2) NOT NULL,
+    StoreID int NOT NULL,
+    DeliveryStatusID int NOT NULL,
+    PaymentStatus varchar(50) NOT NULL,
+    PaymentTypeID int NOT NULL,
+    PRIMARY KEY (OrderID),
+    FOREIGN KEY (ProductColorID) REFERENCES ProductColors (ProductColorID),
+    FOREIGN KEY (StoreID) REFERENCES Stores (StoreID),
+    FOREIGN KEY (DeliveryStatusID) REFERENCES DeliveryStatus (DeliveryStatusID),
+    FOREIGN KEY (PaymentTypeID) REFERENCES PaymentType (PaymentTypeID)
+);
+
 INSERT INTO UserTypes (UserTypeName) VALUES ('admin'), ('customer');
+
