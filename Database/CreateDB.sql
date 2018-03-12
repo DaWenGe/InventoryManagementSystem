@@ -40,4 +40,4 @@ CREATE TABLE IF NOT EXISTS ProductColors (
     ColorID int NOT NULL,
     FOREIGN KEY (ProductID) REFERENCES Products (ProductID),
     FOREIGN KEY (ColorID) REFERENCES Colors (ColorID)
-)
+);
