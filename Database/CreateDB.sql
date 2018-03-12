@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS UserTypes (
 CREATE TABLE IF NOT EXISTS Users (
     UserID int NOT NULL,
     UserName varchar(100) NOT NULL,
-    Password varchar(255) NOT NULL,
+    Password varchar(50) NOT NULL,
     FirstName varchar(100) NULL,
     Email varchar(100) NULL,
     UserTypeID int NOT NULL,
