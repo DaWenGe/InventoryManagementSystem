@@ -3,13 +3,13 @@ CREATE DATABASE IF NOT EXISTS InventorySystemDB;
 USE InventorySystemDB;
 
 CREATE TABLE IF NOT EXISTS UserTypes (
-	UserTypeID int NOT NULL,
+	UserTypeID int NOT NULL AUTO_INCREMENT,
     UserTypeName varchar(100) NOT NULL,
     PRIMARY KEY (UserTypeID)
 );
 
 CREATE TABLE IF NOT EXISTS Users (
-    UserID int NOT NULL,
+    UserID int NOT NULL AUTO_INCREMENT,
     UserName varchar(100) NOT NULL,
     Password varchar(50) NOT NULL,
     FirstName varchar(100) NULL,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 CREATE TABLE IF NOT EXISTS Products (
-	ProductID int NOT NULL,
+	ProductID int NOT NULL AUTO_INCREMENT,
     ProductName varchar(100) NOT NULL,
     Description text NULL,
     ProductImage varchar(255) NULL,
@@ -29,13 +29,13 @@ CREATE TABLE IF NOT EXISTS Products (
 );
 
 CREATE TABLE IF NOT EXISTS Colors (
-	ColorID int NOT NULL,
+	ColorID int NOT NULL AUTO_INCREMENT,
     ColorName varchar(100) NOT NULL,
     PRIMARY KEY (ColorID)
 );
 
 CREATE TABLE IF NOT EXISTS ProductColors (
-	ProductColorID int NOT NULL,
+	ProductColorID int NOT NULL AUTO_INCREMENT,
     ProductID int NOT NULL,
     ColorID int NOT NULL,
     PRIMARY KEY (ProductColorID),
@@ -44,19 +44,19 @@ CREATE TABLE IF NOT EXISTS ProductColors (
 );
 
 CREATE TABLE IF NOT EXISTS DeliveryStatus (
-	DeliveryStatusID int NOT NULL,
+	DeliveryStatusID int NOT NULL AUTO_INCREMENT,
     Status VARCHAR(50) NOT NULL,
     PRIMARY KEY (DeliveryStatusID)
 );
 
 CREATE TABLE IF NOT EXISTS PaymentType (
-	PaymentTypeID int NOT NULL,
+	PaymentTypeID int NOT NULL AUTO_INCREMENT,
     PaymentMethod VARCHAR(100) NOT NULL,
     PRIMARY KEY (PaymentTypeID)
 );
 
 CREATE TABLE IF NOT EXISTS Inventory (
-	InventoryID int NOT NULL,
+	InventoryID int NOT NULL AUTO_INCREMENT,
     ProductColorID int NOT NULL,
     Quantity int NOT NULL,
     Price DECIMAL(10,2) NOT NULL,
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS Inventory (
 );
   
 CREATE TABLE IF NOT EXISTS Stores (
-	StoreID int NOT NULL,
+	StoreID int NOT NULL AUTO_INCREMENT,
     StoreName varchar(100) NOT NULL,
     Address varchar(255) NOT NULL,
     City varchar(50) NOT NULL,
@@ -79,3 +79,5 @@ CREATE TABLE IF NOT EXISTS UserStores (
     FOREIGN KEY (UserID) REFERENCES Users (UserID),
     FOREIGN KEY (StoreID) REFERENCES Stores (StoreID)
 );
+
+INSERT INTO UserTypes (UserTypeName) VALUES ('admin'), ('customer');
