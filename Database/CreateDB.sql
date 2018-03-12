@@ -43,6 +43,27 @@ CREATE TABLE IF NOT EXISTS ProductColors (
     FOREIGN KEY (ColorID) REFERENCES Colors (ColorID)
 );
 
+CREATE TABLE IF NOT EXISTS DeliveryStatus (
+	DeliveryStatusID int NOT NULL,
+    Status VARCHAR(50) NOT NULL,
+    PRIMARY KEY (DeliveryStatusID)
+);
+
+CREATE TABLE IF NOT EXISTS PaymentType (
+	PaymentTypeID int NOT NULL,
+    PaymentMethod VARCHAR(100) NOT NULL,
+    PRIMARY KEY (PaymentTypeID)
+);
+
+CREATE TABLE IF NOT EXISTS Inventory (
+	InventoryID int NOT NULL,
+    ProductColorID int NOT NULL,
+    Quantity int NOT NULL,
+    Price DECIMAL(10,2) NOT NULL,
+    PRIMARY KEY (InventoryID),
+    FOREIGN KEY (ProductColorID) REFERENCES ProductColors (ProductColorID)
+);
+  
 CREATE TABLE IF NOT EXISTS Stores (
 	StoreID int NOT NULL,
     StoreName varchar(100) NOT NULL,
