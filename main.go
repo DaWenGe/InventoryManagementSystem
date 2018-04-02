@@ -8,7 +8,7 @@ import (
 const ServerPort = "8080"
 
 func main() {
-	fs := http.FileServer(http.Dir("./public"))
+	fs := http.FileServer(http.Dir("./dist"))
 	http.Handle("/", fs)
 
 	fmt.Println("Listening on port :", ServerPort)
