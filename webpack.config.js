@@ -8,8 +8,7 @@ var config = {
 	entry: SRC_DIR + "/js/app.js",
 	output: {
 		path: DIST_DIR + "/js",
-		filename: "bundle.js",
-		publicPath: "/js/"
+		filename: "bundle.js"
 	},
 	module: {
 		rules: [
